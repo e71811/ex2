@@ -7,8 +7,8 @@ Assignment: ex2
 #include <stdio.h>
 
 int main() {
-  //main menu
-  int key ;
+	//main menu
+	int key ;
 	//i keep the menu running until the user chooses an available option
 	while (1) {
 		printf("Choose an option:\n");
@@ -23,8 +23,8 @@ int main() {
 		if (key >=1 && key <=7) {
 			break;
 		}
-	else {
-		printf("This option is not available, please try again.\n");
+		else {
+			printf("This option is not available, please try again.\n");
 		}
 	}
 	switch (key) {
@@ -76,106 +76,206 @@ int main() {
 
 
 			break;
+		}
 
+		case 2: {
+			int number;
+			int rememberNumber;
+			int sumRight = 0;
+			int count = 1;
+			int sumLeft = 0 ;
+			int totalSum = 0;
+			int middleSum = 0 ;
+			printf("Enter a number:\n");
+			scanf(" %d",&number);
+			rememberNumber = number;
+			// here i want to count how many numbers there are in "number"
+			while(number/10 !=0) {
+				number=number/10 ;
+				count++;
+			}
+			number=rememberNumber;
+			//i check if count is an odd number ( i want to know if the user typed an even indexed number or odd )
+			if(count%2!=0) {
+				// i want to sum up all the numbers from right of the middle number in "number "
+				for( int i = count; i > (count/2)+1; i-- ) {
+					sumRight=sumRight+number%10;
+					number = number/10;
+				}
+				number = rememberNumber;
+				//i want to sum up all the numbers in "number"
+				for( int i = 0; i <count; i++ ) {
+					totalSum=totalSum+number%10;
+					number = number/10;
 
-			case 2: {
-				int number;
-				int rememberNumber;
-				int sumRight = 0;
-				int count = 1;
-				int sumLeft = 0 ;
-				int totalSum = 0;
-				int middleSum = 0 ;
-				printf("Enter a number:\n");
-				scanf(" %d",&number);
-				rememberNumber = number;
-				// here i want to count how many numbers there are in "number"
+				}
+				number = rememberNumber;
+				//i want here to count all the number on the right side including the middle one
+				for( int i = count; i >= (count/2)+1; i-- ) {
+					middleSum=middleSum+number%10;
+					number = number/10;
+				}
+				// here i count the left side by calculating total sum - middlesum
+				sumLeft=totalSum-middleSum;
+				//i check if the right side in equal to the left side
+				if (sumLeft == sumRight) {
+					printf("This number is balanced and brings harmony!\n");
+				}
+				else {
+					printf("This number isn't balanced and destroys harmony.\n");
+				}
+
+				break;
+			}
+			number = rememberNumber;
+			//i check if count is an even number ( i want to know if the user typed an even indexed number or odd )
+			if(count%2 ==0) {
+				//here i want to sum up all the number that are in the right side of "number" number
+				for( int i = count; i > count/2; i-- ) {
+					sumRight=sumRight+number%10;
+					number = number/10;
+				}
+				//after i changed "number" i want it to stay as it was
+				number = rememberNumber;
+				//here i sum up all the numbers of "number" so i would be able to calculate how much is the sum up of the left side
+				for( int i = 0; i <count; i++ ) {
+					totalSum=totalSum+number%10;
+					number = number/10;
+
+				}
+				sumLeft=totalSum-sumRight;
+				// here iam checking if the left sum up is equal to the right sum up
+				if (sumRight == sumLeft) {
+					printf("This number is balanced and brings harmony!\n");
+				}else {
+					printf("This number isn't balanced and destroys harmony.\n");
+				}
+				break;
+			}
+		}
+
+		case 3: {
+			int number;
+			int totalSum = 0;
+			int count =1;
+			printf("Enter a number:\n");
+			scanf("%d",&number);
+			int rememberNumber= number;
+			//i define it to be right number
+			int rightNumber = number%10;
+			while(number<0 ) {
+				printf("Only positive number is allowed, please try again:\n");
+				scanf("%d",&number);
+			}
+			if(number/10 !=0) {
+				number=number/10;
+				//here i count how many numbers there are in number after i removed the right one
 				while(number/10 !=0) {
 					number=number/10 ;
 					count++;
 				}
-				number=rememberNumber;
-				//i check if count is an odd number ( i want to know if the user typed an even indexed number or odd )
-					if(count%2!=0) {
-						// i want to sum up all the numbers from right of the middle number in "number "
-						for( int i = count; i > (count/2)+1; i-- ) {
-							sumRight=sumRight+number%10;
-							number = number/10;
-						}
-						number = rememberNumber;
-						//i want to sum up all the numbers in "number"
-						for( int i = 0; i <count; i++ ) {
-							totalSum=totalSum+number%10;
-							number = number/10;
+				//i summed up all the numbers in number after i removed the right one
+				for( int i = 0; i <count; i++ ) {
+					totalSum=totalSum+number%10;
+					number = number/10;
 
-						}
-						number = rememberNumber;
-						//i want here to count all the number on the right side including the middle one
-						for( int i = count; i >= (count/2)+1; i-- ) {
-							middleSum=middleSum+number%10;
-							number = number/10;
-						}
-						// here i count the left side by calculating total sum - middlesum
-						sumLeft=totalSum-middleSum;
-                         //i check if the right side in equal to the left side
-						if (sumLeft == sumRight) {
-							printf("This number is balanced and brings harmony!\n");
-						}
-						else {
-							printf("This number isn't balanced and destroys harmony.\n");
-						}
-
-						break;
-					}
-			     number = rememberNumber;
-				//i check if count is an even number ( i want to know if the user typed an even indexed number or odd )
-				if(count%2 ==0) {
-					//here i want to sum up all the number that are in the right side of "number" number
-					for( int i = count; i > count/2; i-- ) {
-						sumRight=sumRight+number%10;
-						number = number/10;
-					}
-					//after i changed "number" i want it to stay as it was
-					number = rememberNumber;
-					//here i sum up all the numbers of "number" so i would be able to calculate how much is the sum up of the left side
-					for( int i = 0; i <count; i++ ) {
-						totalSum=totalSum+number%10;
-						number = number/10;
-
-					}
-					sumLeft=totalSum-sumRight;
-					// here iam checking if the left sum up is equal to the right sum up
-					if (sumRight == sumLeft) {
-						printf("This number is balanced and brings harmony!\n");
-					}else {
-						printf("This number isn't balanced and destroys harmony.\n");
-					}
-					break;
 				}
-
-
-				case 3:
-
-
-				case 4:
-
-				case 5:
-
-
-				case 6:
-
-				case 7: {
-					printf("Thank you for your journey through Numeria!\n");
-					break;
+				if(rightNumber>totalSum) {
+					printf("This number is generous!\n");
+				}else {
+					printf("This number does not share.\n");
 				}
+			}else {
+				printf("This number does not share.\n");
 
-
-				default:  printf("This option is not available, please try again.\n");
 			}
+			break;
 		}
+{
+
+
+
+
+	case 4: {
+		int primeNumber;
+		int reversal;
+		int count = 1;
+		printf("Enter a number:\n");
+		scanf("%d", &primeNumber);
+		// i want a variable that holds the value of "primeNumber " because i want to use and change it in the code
+		int saver =primeNumber;
+		//i want to start from 2 because i dont want to check 1 in terms of dividing
+		int i=2;
+		//i want to start from 2 because i dont want to check 1 in terms of dividing
+		int j=2;
+		//here i check if the number is positive or not
+		while(primeNumber<0) {
+			printf("Only positive number is allowed, please try again:\n");
+			scanf("%d",&primeNumber);
+		}
+		while(primeNumber/10 !=0) {
+			primeNumber=primeNumber/10 ;
+			count++;
+		}
+		primeNumber=saver;
+		// here i reverse the primeNumber by making everytime the right number * 10 ^(count"index") so it will be the in the left in "reversal"
+		while(primeNumber/10 !=0) {
+			reversal=(primeNumber%10)*10^(count-1);
+			primeNumber=primeNumber/10;
+			count=count-1;
+		}
+		primeNumber=saver;
+
+			//here i check if from the number 2 until the number "primeNumner" there is a number that after doing % between them = 0
+			while( i<primeNumber ) {
+				if(primeNumber%i == 0) {
+					printf("The circle remains incomplete.\n");
+					break;
+				}
+				i++;
+              break;
+			}
+
+			//here i check if from the number 2 until the number "reversal" there is a number that after doing % between them = 0
+			while( j<reversal) {
+				if(reversal%j == 0) {
+					printf("The circle remains incomplete.\n");
+					break;
+				}
+				j++;
+               break;
+			}
+			printf("This number completes the circle of joy!\n");
+
+
+
+
+
+
+
+
+
+
+		case 5:
+
+
+		case 6:
+
+		case 7: {
+			printf("Thank you for your journey through Numeria!\n");
+			break;
+		}
+
+
+		default:  printf("This option is not available, please try again.\n");
 	}
-	return 0;
 }
+		return 0;
+	}
+}
+
+
+
 
 
 
