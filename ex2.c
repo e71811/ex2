@@ -218,12 +218,14 @@ int main() {
 			count++;
 		}
 		primeNumber=saver;
+
 		// here i reverse the primeNumber by making everytime the right number * 10 ^(count"index") so it will be the in the left in "reversal"
 		while(primeNumber/10 !=0) {
-			reversal=(primeNumber%10)*10^(count-1);
+			reversal=reversal+(primeNumber%10)*10^(count-1);
 			primeNumber=primeNumber/10;
 			count=count-1;
 		}
+		printf("%d",reversal);
 		primeNumber=saver;
 
 			//here i check if from the number 2 until the number "primeNumner" there is a number that after doing % between them = 0
