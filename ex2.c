@@ -191,71 +191,124 @@ int main() {
 			}
 			break;
 		}
-{
 
 
 
 
-	case 4: {
-		int number;
-		int primeNumber;
-		int reversal=0;
-		int finished =1 ;
-		printf("Enter a number:\n");
-		scanf("%d", &primeNumber);
-		int saver =primeNumber;
-		//i want to start from 2 because i dont want to check 1 in terms of dividing
-		int i=2;
-		//i want to start from 2 because i dont want to check 1 in terms of dividing
-		int j=2;
-		//here i check if the number is positive or not
-		while(primeNumber<0) {
-			printf("Only positive number is allowed, please try again:\n");
-			scanf("%d",&primeNumber);
-		}
-		primeNumber=saver;
-		// here i reverse the primeNumber by making everytime the right number * 10 ^(count"index") so it will be the in the left in "reversal"
-		while(primeNumber !=0) {
-			number=primeNumber%10;
-			primeNumber=primeNumber/10;
-			reversal=reversal*10+number;
-		}
-		primeNumber=saver;
-		//here i check if from the number 2 until the number "primeNumner"  there is a number that after doing % between them = 0 also i do it for reversal
-        // the goal here is to check if there is a number between 2 to the "primenumber" or "reversal" that we can multiplie  so it will get to these numbers
-		while( i<primeNumber &&j<reversal) {
-			if(primeNumber%i == 0||reversal%j == 0) {
-				printf("The circle remains incomplete.\n");
-				 finished = 0 ;
-				break;
+
+
+		case 4: {
+			int number;
+			int primeNumber;
+			int reversal=0;
+			int finished =1 ;
+			printf("Enter a number:\n");
+			scanf("%d", &primeNumber);
+			int saver =primeNumber;
+			//i want to start from 2 because i dont want to check 1 in terms of dividing
+			int i=2;
+			//i want to start from 2 because i dont want to check 1 in terms of dividing
+			int j=2;
+			//here i check if the number is positive or not
+			while(primeNumber<0) {
+				printf("Only positive number is allowed, please try again:\n");
+				scanf("%d",&primeNumber);
 			}
-			i++;
-			j++;
-		}
-		// here i want check if any of the number (prime number or his reversed form ) is not prime if they are both then it will print
-		if(finished==1) { printf("This number completes the circle of joy!\n");}
+			primeNumber=saver;
+			// here i reverse the primeNumber by making everytime the right number * 10 ^(count"index") so it will be the in the left in "reversal"
+			while(primeNumber !=0) {
+				number=primeNumber%10;
+				primeNumber=primeNumber/10;
+				reversal=reversal*10+number;
+			}
+			primeNumber=saver;
+			//here i check if from the number 2 until the number "primeNumner"  there is a number that after doing % between them = 0 also i do it for reversal
+			// the goal here is to check if there is a number between 2 to the "primenumber" or "reversal" that we can multiplie  so it will get to these numbers
+			while( i<primeNumber &&j<reversal) {
+				if(primeNumber%i == 0||reversal%j == 0) {
+					printf("The circle remains incomplete.\n");
+					finished = 0 ;
+					break;
+				}
+				i++;
+				j++;
+			}
+			// here i want check if any of the number (prime number or his reversed form ) is not prime if they are both then it will print
+			if(finished==1) { printf("This number completes the circle of joy!\n");}
 
-		break;
-
-		case 5: {
-
-		}
-
-
-		case 6:
-
-		case 7: {
-			printf("Thank you for your journey through Numeria!\n");
 			break;
 		}
+		case 5: {
+
+			int rememberI = 0 ;
+			int sum = 0;
+			printf("Enter a number:\n");
+			int happyNumber=0;
+			scanf("%d",&happyNumber);
+			// here i want to make sure that user is typing positive number
+			while(happyNumber<=0) {
+				printf("Only positive number is allowed, please try again:\n");
+				scanf("%d",&happyNumber);
+			}
+			printf("Between 1 and %d only these numbers bring\n ",happyNumber);
+			printf("happiness:");
+			for(int i = 1; i<=happyNumber; i++) {
+				int stopWhile= 0;
+				rememberI=i;
+				while (!stopWhile) {
+					sum=0;
+					while (rememberI >0) {
+						sum=sum+(rememberI%10)*(rememberI%10);
+						rememberI=rememberI/10;
+					}
+
+						if(sum==1) {
+							printf(" %d",i);
+							stopWhile = 1;
+						}
+
+					if(i==sum&&i!=1) {
+						break;
+					}
+                      rememberI= sum;
+
+				}
+			}
+			break;
+
+			case 6: {
+				int cheer =0 ;
+				int smile = 0 ;
+				char cheerWord = " cheer:";
+				char smileWord = " smile:";
+				char firstW="";
+				char secondW="";
+				printf("Enter a smile and cheer number:\n");
+				scanf("%c",firstW,"%c",smileWord,"%d",&happyNumber);
+
+				while (firstW==cheerWord&&secondW==cheerWord&&cheer>0&&smile>0) {
+					printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+					scanf("%c",firstW,"%c",smileWord,"%d",&happyNumber);
+				}
 
 
-		default:  printf("This option is not available, please try again.\n");
-	}
-}
+			}
+
+			case 7: {
+				printf("Thank you for your journey through Numeria!\n");
+				break;
+			}
+
+
+			default:  printf("This option is not available, please try again.\n");
+		}
 		return 0;
 	}
 }
+
+
+
+
 
 
 
