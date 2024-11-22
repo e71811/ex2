@@ -197,12 +197,12 @@ int main() {
 
 
 	case 4: {
+		int number;
 		int primeNumber;
-		int reversal;
-		int count = 1;
+		int reversal=0;
+		int finished =1 ;
 		printf("Enter a number:\n");
 		scanf("%d", &primeNumber);
-		// i want a variable that holds the value of "primeNumber " because i want to use and change it in the code
 		int saver =primeNumber;
 		//i want to start from 2 because i dont want to check 1 in terms of dividing
 		int i=2;
@@ -213,52 +213,33 @@ int main() {
 			printf("Only positive number is allowed, please try again:\n");
 			scanf("%d",&primeNumber);
 		}
-		while(primeNumber/10 !=0) {
-			primeNumber=primeNumber/10 ;
-			count++;
-		}
 		primeNumber=saver;
-
 		// here i reverse the primeNumber by making everytime the right number * 10 ^(count"index") so it will be the in the left in "reversal"
-		while(primeNumber/10 !=0) {
-			reversal=reversal+(primeNumber%10)*10^(count-1);
+		while(primeNumber !=0) {
+			number=primeNumber%10;
 			primeNumber=primeNumber/10;
-			count=count-1;
+			reversal=reversal*10+number;
 		}
-		printf("%d",reversal);
 		primeNumber=saver;
-
-			//here i check if from the number 2 until the number "primeNumner" there is a number that after doing % between them = 0
-			while( i<primeNumber ) {
-				if(primeNumber%i == 0) {
-					printf("The circle remains incomplete.\n");
-					break;
-				}
-				i++;
-              break;
+		//here i check if from the number 2 until the number "primeNumner"  there is a number that after doing % between them = 0 also i do it for reversal
+        // the goal here is to check if there is a number between 2 to the "primenumber" or "reversal" that we can multiplie  so it will get to these numbers
+		while( i<primeNumber &&j<reversal) {
+			if(primeNumber%i == 0||reversal%j == 0) {
+				printf("The circle remains incomplete.\n");
+				 finished = 0 ;
+				break;
 			}
+			i++;
+			j++;
+		}
+		// here i want check if any of the number (prime number or his reversed form ) is not prime if they are both then it will print
+		if(finished==1) { printf("This number completes the circle of joy!\n");}
 
-			//here i check if from the number 2 until the number "reversal" there is a number that after doing % between them = 0
-			while( j<reversal) {
-				if(reversal%j == 0) {
-					printf("The circle remains incomplete.\n");
-					break;
-				}
-				j++;
-               break;
-			}
-			printf("This number completes the circle of joy!\n");
+		break;
 
+		case 5: {
 
-
-
-
-
-
-
-
-
-		case 5:
+		}
 
 
 		case 6:
