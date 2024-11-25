@@ -20,14 +20,10 @@ int main() {
 		printf("\t6. Festival Of Laughter\n");
 		printf("\t7. Exit\n");
 		scanf("%d",&key);
-		if (key >=1 && key <=7) {
-			break;
-		}
-		else {
+		if (key < 1 || key > 7) {
 			printf("This option is not available, please try again.\n");
 		}
-	}
-	switch (key) {
+			switch (key) {
 		case 1: {
 			char eye;
 			char nose;
@@ -262,7 +258,7 @@ int main() {
 				scanf("%*c");
 			}
 			// here i get the max number from the user
-			printf("Enter maximum number for the festival:\n ");
+			printf("Enter maximum number for the festival:\n");
 			scanf("%d",&max);
 
 			while (max<0) {
@@ -292,8 +288,10 @@ int main() {
 			}
 
 
-			default:  printf("This option is not available, please try again.\n");
 		}
+
+	}
+
 		return 0;
 	}
 
