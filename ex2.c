@@ -239,60 +239,58 @@ int main() {
 			break;
 		}
 		case 5: {
+			int happyNumber = 0 ;
 
-			int rememberI = 0 ;
-			int sum = 0;
-			printf("Enter a number:\n");
-			int happyNumber=0;
-			scanf("%d",&happyNumber);
-			// here i want to make sure that user is typing positive number
-			while(happyNumber<=0) {
-				printf("Only positive number is allowed, please try again:\n");
-				scanf("%d",&happyNumber);
-			}
-			printf("Between 1 and %d only these numbers bring\n ",happyNumber);
-			printf("happiness:");
-			for(int i = 1; i<=happyNumber; i++) {
-				int stopWhile= 0;
-				rememberI=i;
-				while (!stopWhile) {
-					sum=0;
-					while (rememberI >0) {
-						sum=sum+(rememberI%10)*(rememberI%10);
-						rememberI=rememberI/10;
-					}
+		}
+		case 6: {
+			int max = 0;
+			int x ;
+			int smileNum;
+			int cheerNum;
+			printf("Enter a smile and cheer number:");
+			scanf("%*[^\n]");
+			scanf("%*c");
+			// in this loop i i want to keep getting input from the user if the terms arent me like the numbers need to be positive and etc
+			while(1) {
+				x = scanf("smile: %d, cheer: %d",&smileNum,&cheerNum);
 
-						if(sum==1) {
-							printf(" %d",i);
-							stopWhile = 1;
-						}
-
-					if(i==sum&&i!=1) {
-						break;
-					}
-                      rememberI= sum;
-
+				if (x == 2 && cheerNum > 0 && smileNum > 0 && smileNum != cheerNum) {
+					break;
 				}
+				printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:");
+				scanf("%*[^\n]");
+				scanf("%*c");
+			}
+			//i clean the buffer to prevent any problems that might ouccur
+			scanf("%*[^\n]");
+			scanf("%*c");
+			// here i get the max number from the user
+			printf("Enter maximum number for the festival:\n ");
+			scanf("%d",&max);
+
+			if (max<0) {
+				printf("Only positive maximum number is allowed, please try again:\n");
+				scanf("%*[^\n]");
+				scanf("%*c");
+				scanf(" %d",&max);
+
+			}
+			for (int i=0;i<=max;i++) {
+				if(smileNum%i==0&&cheerNum%i==0) {
+					printf("Festival!!\n");
+				}
+				if(smileNum%i==0) {
+					printf("smile!\n");
+				}
+				if(cheerNum%i==0) {
+					printf("cheer!\n");
+				}
+				printf("%d ",i);
 			}
 			break;
-
-			case 6: {
-				int cheer =0 ;
-				int smile = 0 ;
-				char cheerWord = " cheer:";
-				char smileWord = " smile:";
-				char firstW="";
-				char secondW="";
-				printf("Enter a smile and cheer number:\n");
-				scanf("%c",firstW,"%c",smileWord,"%d",&happyNumber);
-
-				while (firstW==cheerWord&&secondW==cheerWord&&cheer>0&&smile>0) {
-					printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
-					scanf("%c",firstW,"%c",smileWord,"%d",&happyNumber);
-				}
+		}
 
 
-			}
 
 			case 7: {
 				printf("Thank you for your journey through Numeria!\n");
@@ -304,7 +302,7 @@ int main() {
 		}
 		return 0;
 	}
-}
+
 
 
 
