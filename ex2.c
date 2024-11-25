@@ -261,31 +261,25 @@ int main() {
 				scanf("%*[^\n]");
 				scanf("%*c");
 			}
-			//i clean the buffer to prevent any problems that might ouccur
-			scanf("%*[^\n]");
-			scanf("%*c");
 			// here i get the max number from the user
 			printf("Enter maximum number for the festival:\n ");
 			scanf("%d",&max);
 
-			if (max<0) {
+			while (max<0) {
 				printf("Only positive maximum number is allowed, please try again:\n");
-				scanf("%*[^\n]");
-				scanf("%*c");
 				scanf(" %d",&max);
 
 			}
-			for (int i=0;i<=max;i++) {
-				if(smileNum%i==0&&cheerNum%i==0) {
+			for (int i=1;i<=max;i++) {
+				if(i%smileNum==0 && i%cheerNum==0) {
 					printf("Festival!!\n");
-				}
-				if(smileNum%i==0) {
+				}else if(i%smileNum==0) {
 					printf("smile!\n");
-				}
-				if(cheerNum%i==0) {
+
+				}else if(i%cheerNum==0) {
 					printf("cheer!\n");
-				}
-				printf("%d ",i);
+				}else
+					printf("%d\n",i);
 			}
 			break;
 		}
