@@ -5,12 +5,14 @@ Assignment: ex2
 *******************/
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
 	//main menu
+	int endProgram = 1 ;
 	int key ;
 	//i keep the menu running until the user chooses an available option
-	while (1) {
+	while (endProgram) {
 		printf("Choose an option:\n");
 		printf("\t1. Happy Face\n");
 		printf("\t2. Balanced Number\n");
@@ -24,7 +26,7 @@ int main() {
 			printf("This option is not available, please try again.\n");
 		}
 			switch (key) {
-		case 1: {
+		    case 1: {
 			char eye;
 			char nose;
 			char mouth;
@@ -68,7 +70,7 @@ int main() {
 				size--;
 			}
 			// here i print the last mouth "piece"
-			printf(	"/");
+			printf(	"/\n");
 
 
 			break;
@@ -103,7 +105,6 @@ int main() {
 				for( int i = 0; i <count; i++ ) {
 					totalSum=totalSum+number%10;
 					number = number/10;
-
 				}
 				number = rememberNumber;
 				//i want here to count all the number on the right side including the middle one
@@ -188,11 +189,6 @@ int main() {
 			break;
 		}
 
-
-
-
-
-
 		case 4: {
 			int number;
 			int primeNumber;
@@ -230,12 +226,14 @@ int main() {
 				j++;
 			}
 			// here i want check if any of the number (prime number or his reversed form ) is not prime if they are both then it will print
-			if(finished==1) { printf("This number completes the circle of joy!\n");}
+			if(finished==1) {
+				printf("This number completes the circle of joy!\n");
+			}
 
 			break;
 		}
 		case 5: {
-			int happyNumber = 0 ;
+
 
 		}
 		case 6: {
@@ -243,7 +241,7 @@ int main() {
 			int x ;
 			int smileNum;
 			int cheerNum;
-			printf("Enter a smile and cheer number:");
+			printf("Enter a smile and cheer number:\n");
 			scanf("%*[^\n]");
 			scanf("%*c");
 			// in this loop i i want to keep getting input from the user if the terms arent me like the numbers need to be positive and etc
@@ -253,7 +251,7 @@ int main() {
 				if (x == 2 && cheerNum > 0 && smileNum > 0 && smileNum != cheerNum) {
 					break;
 				}
-				printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:");
+				printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
 				scanf("%*[^\n]");
 				scanf("%*c");
 			}
@@ -284,6 +282,7 @@ int main() {
 
 			case 7: {
 				printf("Thank you for your journey through Numeria!\n");
+			    endProgram=0;
 				break;
 			}
 
