@@ -234,7 +234,6 @@ int main() {
 		}
 		case 5: {
 
-
 		}
 		case 6: {
 			int max = 0;
