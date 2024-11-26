@@ -39,12 +39,13 @@ int main() {
 			printf("Enter face size:\n");
 			scanf("%d",&size);
 			// before i make changes in size i want to be able to use it multiple times thats why i use remembersize == size
-			rememberSize = size ;
+			rememberSize = size;
 			//i check if the user chooses negative number if so i tell the user to choose other number if hes typing positive number but an even on i also tell him to choose new number
 			while( size <=0 || size%2 == 0 ) {
 				printf("The face's size must be an odd and positive number, please try again:\n");
 				scanf("%d",&size);
 			}
+		    rememberSize = size;
 			printf("%c",eye);
 			//i want to make space until i get to the wished index
 			while(size>0) {
@@ -65,14 +66,14 @@ int main() {
 			size=rememberSize;
 			printf("%c\n",nose);
 			//i print the first mouth "piece"
-			printf(	"\\");
+			printf("\\");
 			//here i print the user selected mouth "piece"
 			while(size>0) {
 				printf("%c",mouth);
 				size--;
 			}
 			// here i print the last mouth "piece"
-			printf(	"/\n");
+			printf("/\n");
 
 
 			break;
@@ -165,38 +166,26 @@ int main() {
 		case 3: {
 			int number;
 			int totalSum = 0;
-			int count =1;
 			printf("Enter a number:\n");
 			scanf("%d",&number);
-			int rememberNumber= number;
-			//i define it to be right number
-			int rightNumber = number%numTen;
-			while(number<0 ) {
+			while(number<=0 ) {
 				printf("Only positive number is allowed, please try again:\n");
 				scanf("%d",&number);
 			}
-			if(number/numTen !=0) {
-				number=number/numTen;
-				//here i count how many numbers there are in number after i removed the right one
-				while(number/numTen !=0) {
-					number=number/numTen ;
-					count++;
-				}
-				//i summed up all the numbers in number after i removed the right one
-				for( int i = 0; i <count; i++ ) {
-					totalSum=totalSum+number%numTen;
-					number = number/numTen;
-
-				}
-				if(rightNumber>totalSum) {
-					printf("This number is generous!\n");
-				}else {
+                for( int i = 1; i <number; i++ ) {
+                	if (number%i == 0) {
+                		totalSum=totalSum+i;
+                	}
+                }
+		    	//here i want to check if the total sum of all the divisors of the number are less or more of the number
+				if(number>totalSum) {
 					printf("This number does not share.\n");
+				}else {
+					printf("This number is generous!\n");
 				}
-			}else {
-				printf("This number does not share.\n");
 
-			}
+
+
 			break;
 		}
 
@@ -243,42 +232,54 @@ int main() {
 
 			break;
 		}
-		case 5: {
-		 int number,newNumber,temp;
-		 int loop  = 1;
-		 int power  = 0;
-	     printf("Enter a number:\n");
-		 scanf(" %d",&number);
-		 while(number<0) {
-		 printf("Only positive number is allowed, please try again:\n");
-		 scanf(" %d",&number);
-		 }
-		 temp=loop;
-		 printf("Between 1 and %d only these numbers bring happiness:", number);
-		 while(loop<=number){
-		 while(temp!=0) {
-		 newNumber=temp%numTen;
-		 power=power+(newNumber*newNumber);
-		 temp=temp/numTen;
-		 }
-		 if(power==1) {
-		    printf(" %d",loop);
-		 	loop+=1;
-		    temp=loop;
-		    power=0;
-		 }else {
-		   if(power==4) {
-		     loop+=1;
-		     temp=loop;
-		   	power=0;
-		 }else {
+				case 5: {
+			    // Case for "Happy Numbers"
+		    	int number, newNumber, temp;
+		    	int loop = 1, power = 0;
+		    	const int TEN = 10;
 
-		  temp=power;
-		  power=0;
-		 }
-		 }
-		 }
-		}
+		    	// Input number
+		    	printf("Enter a number:\n");
+		    	scanf("%d", &number);
+
+		    	// Ensure the number is positive
+		    	while (number <= 0) {
+		    		printf("Only positive number is allowed, please try again:\n");
+		    		scanf(" %d", &number);
+		    	}
+
+		    	temp = loop;
+		    	printf("Between 1 and %d only these numbers bring happiness:", number);
+
+		    	// Loop through numbers and check happiness condition
+		    	while (loop <= number) {
+		    		while (temp != 0) {
+		    			newNumber = temp % TEN;
+		    			power = power + (newNumber * newNumber);
+		    			temp = temp / TEN;
+		    		}
+
+		    		// If power reaches 1, it's a happy number
+		    		if (power == 1) {
+		    			printf(" %d", loop);
+		    			loop += 1;
+		    			temp = loop;
+		    			power = 0;
+		    		} else {
+		    			// If power reaches 4, it's not a happy number
+		    			if (power == 4) {
+		    				loop += 1;
+		    				temp = loop;
+		    				power = 0;
+		    			} else {
+		    				temp = power;
+		    				power = 0;
+		    			}
+		    		}
+		    	}
+		    	printf("\n");
+		    	break;
+		    }
 		case 6: {
 			int max = 0;
 			int x ;
