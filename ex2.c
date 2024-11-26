@@ -244,7 +244,40 @@ int main() {
 			break;
 		}
 		case 5: {
+		 int number,newNumber,temp;
+		 int loop  = 1;
+		 int power  = 0;
+	     printf("Enter a number:\n");
+		 scanf(" %d",&number);
+		 while(number<0) {
+		 printf("Only positive number is allowed, please try again:\n");
+		 scanf(" %d",&number);
+		 }
+		 temp=loop;
+		 printf("Between 1 and %d only these numbers bring happiness:", number);
+		 while(loop<=number){
+		 while(temp!=0) {
+		 newNumber=temp%numTen;
+		 power=power+(newNumber*newNumber);
+		 temp=temp/numTen;
+		 }
+		 if(power==1) {
+		    printf(" %d",loop);
+		 	loop+=1;
+		    temp=loop;
+		    power=0;
+		 }else {
+		   if(power==4) {
+		     loop+=1;
+		     temp=loop;
+		   	power=0;
+		 }else {
 
+		  temp=power;
+		  power=0;
+		 }
+		 }
+		 }
 		}
 		case 6: {
 			int max = 0;
