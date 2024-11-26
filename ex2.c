@@ -94,8 +94,12 @@ int main() {
 		    		scanf(" %d",&number);
 		    		rememberNumber = number;
 		    	}
-			// here i want to count how many numbers there are in "number"
-			while(number/numTen !=0) {
+
+
+			/* here i want to count how many numbers there are in "number",
+             so each time i divide by 10 because i wanna serperate the most right digit until i arrive to 0 (thats how i know how long the number is )
+             */
+		    	while(number/numTen !=0) {
 				number=number/numTen ;
 				count++;
 			}
@@ -247,7 +251,7 @@ int main() {
 			int x ;
 			int smileNum;
 			int cheerNum;
-		    //here i define stoploop to be 1 because 1 == true to the system
+		    //here i define stoploop to be 1 because 1 == true to the system and i want the while loop to run until it get breaked
 		    int stopLoop = 1;
 			printf("Enter a smile and cheer number:\n");
 			scanf("%*[^\n]");
