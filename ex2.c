@@ -11,6 +11,8 @@ int main() {
 	//main menu
 	int endProgram = 1 ;
 	int key ;
+	// because iam gonna use the number ten a lot in some cases i would like to assign it an variable
+	int numTen = 10 ;
 	//i keep the menu running until the user chooses an available option
 	while (endProgram) {
 		printf("Choose an option:\n");
@@ -87,9 +89,14 @@ int main() {
 			printf("Enter a number:\n");
 			scanf(" %d",&number);
 			rememberNumber = number;
+		    	while (number<0) {
+		    		printf("Only positive number is allowed, please try again:\n");
+		    		scanf(" %d",&number);
+		    		rememberNumber = number;
+		    	}
 			// here i want to count how many numbers there are in "number"
-			while(number/10 !=0) {
-				number=number/10 ;
+			while(number/numTen !=0) {
+				number=number/numTen ;
 				count++;
 			}
 			number=rememberNumber;
@@ -97,20 +104,20 @@ int main() {
 			if(count%2!=0) {
 				// i want to sum up all the numbers from right of the middle number in "number "
 				for( int i = count; i > (count/2)+1; i-- ) {
-					sumRight=sumRight+number%10;
-					number = number/10;
+					sumRight=sumRight+number%numTen;
+					number = number/numTen;
 				}
 				number = rememberNumber;
 				//i want to sum up all the numbers in "number"
 				for( int i = 0; i <count; i++ ) {
-					totalSum=totalSum+number%10;
-					number = number/10;
+					totalSum=totalSum+number%numTen;
+					number = number/numTen;
 				}
 				number = rememberNumber;
 				//i want here to count all the number on the right side including the middle one
 				for( int i = count; i >= (count/2)+1; i-- ) {
-					middleSum=middleSum+number%10;
-					number = number/10;
+					middleSum=middleSum+number%numTen;
+					number = number/numTen;
 				}
 				// here i count the left side by calculating total sum - middlesum
 				sumLeft=totalSum-middleSum;
@@ -129,15 +136,15 @@ int main() {
 			if(count%2 ==0) {
 				//here i want to sum up all the number that are in the right side of "number" number
 				for( int i = count; i > count/2; i-- ) {
-					sumRight=sumRight+number%10;
-					number = number/10;
+					sumRight=sumRight+number%numTen;
+					number = number/numTen;
 				}
 				//after i changed "number" i want it to stay as it was
 				number = rememberNumber;
 				//here i sum up all the numbers of "number" so i would be able to calculate how much is the sum up of the left side
 				for( int i = 0; i <count; i++ ) {
-					totalSum=totalSum+number%10;
-					number = number/10;
+					totalSum=totalSum+number%numTen;
+					number = number/numTen;
 
 				}
 				sumLeft=totalSum-sumRight;
@@ -159,22 +166,22 @@ int main() {
 			scanf("%d",&number);
 			int rememberNumber= number;
 			//i define it to be right number
-			int rightNumber = number%10;
+			int rightNumber = number%numTen;
 			while(number<0 ) {
 				printf("Only positive number is allowed, please try again:\n");
 				scanf("%d",&number);
 			}
-			if(number/10 !=0) {
-				number=number/10;
+			if(number/numTen !=0) {
+				number=number/numTen;
 				//here i count how many numbers there are in number after i removed the right one
-				while(number/10 !=0) {
-					number=number/10 ;
+				while(number/numTen !=0) {
+					number=number/numTen ;
 					count++;
 				}
 				//i summed up all the numbers in number after i removed the right one
 				for( int i = 0; i <count; i++ ) {
-					totalSum=totalSum+number%10;
-					number = number/10;
+					totalSum=totalSum+number%numTen;
+					number = number/numTen;
 
 				}
 				if(rightNumber>totalSum) {
@@ -209,9 +216,9 @@ int main() {
 			primeNumber=saver;
 			// here i reverse the primeNumber by making everytime the right number * 10 ^(count"index") so it will be the in the left in "reversal"
 			while(primeNumber !=0) {
-				number=primeNumber%10;
-				primeNumber=primeNumber/10;
-				reversal=reversal*10+number;
+				number=primeNumber%numTen;
+				primeNumber=primeNumber/numTen;
+				reversal=reversal*numTen+number;
 			}
 			primeNumber=saver;
 			//here i check if from the number 2 until the number "primeNumner"  there is a number that after doing % between them = 0 also i do it for reversal
@@ -240,11 +247,13 @@ int main() {
 			int x ;
 			int smileNum;
 			int cheerNum;
+		    //here i define stoploop to be 1 because 1 == true to the system
+		    int stopLoop = 1;
 			printf("Enter a smile and cheer number:\n");
 			scanf("%*[^\n]");
 			scanf("%*c");
 			// in this loop i i want to keep getting input from the user if the terms arent me like the numbers need to be positive and etc
-			while(1) {
+			while(stopLoop) {
 				x = scanf("smile: %d, cheer: %d",&smileNum,&cheerNum);
 
 				if (x == 2 && cheerNum > 0 && smileNum > 0 && smileNum != cheerNum) {
